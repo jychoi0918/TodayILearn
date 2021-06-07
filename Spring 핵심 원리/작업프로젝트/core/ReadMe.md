@@ -33,3 +33,57 @@ _김영한-스프링 핵심 원리-기본편_
 
 ++
 단위테스트 중요
+
+
+<br><br><br>
+
+###개발
+* discount
+  * DiscountPolicy (interface)
+      * FixDiscountPolicy
+        
+* member
+  * Grade
+  * Member
+  * MemberRepository (interface)
+    * MemberRepositoryImpl
+  * MemberService(interface)  
+    * MemberServiceImpl
+* order
+    - Order
+    - OrderService (interface)
+         - OrderServiceImpl
+<br>
+<br>
+
+           
+<hr>
+<br>
+
+### 새로운 할인 정책 개발 21.06.07 
+
+할인율 - 1000원 고정 할인에서 10% 할인율로 변경
+* discount
+    * DiscountPolicy (interface)
+        * FixDiscountPolicy
+        * RateDiscountPolicy ====> 추가
+
+    <br>
+          
+
+**문제점**
+
+OrderServiceImpl이 DiscountPolicy 인터페이스와 
+FixDiscountPolicy 구체 클레스도 함께 의존 => **DIP 위반**
+(추상화에만 의존해야한다)
+
+따라서 Fix=>Rate로 변경할때 코드 수정이 일어남.==> **OCP 위반**
+<br>
+변경하지 않아야 하는데 클라이언트 코드를 수정했음.
+
+
+이를 해결하기 위해 구현체 없이 인터페이스 만을 의존하게 코드 수정 but 구현체가 없으니 NullPointException 발생
+
+**해결방안**
+
+_누군가가 클라이언트 "OrderServiceImpl"에 "DiscountPolicy" 구현객체 대신 생성 후 주입해줘야한다._
