@@ -109,3 +109,67 @@ _누군가가 클라이언트 "OrderServiceImpl"에 "DiscountPolicy" 구현객�
 => _사용영역의 변경이 없어지고, 구성영역에서 변경만 일어나게 해준다. 변경을 한뒤 영향이 끼쳐지는 범위가 적어진다._
 변경이 닫혀있다 = 변경을 해 줄 필요가 없다.
 
+<hr>
+
+## 스프링으로 전환하기 21. 06. 13
+
+**스프링 컨테이너**
+_ApplicationContext_를 스프링 컨테이너라고 한다.
+기존: 개발자 AppConfig사용 -> 현재: 스프링컨테이너에서 꺼내사용
+
+**@Configuration**AppConfig 사용 **@Bean**붙은 메서드들이 스프링 컨테이너에 저장
+됨.(스프링 빈) 기본적으로 메서드이름을 key, 반환 값을 value로 한다.
+applicationContext.getBean으로 찾는다.
+
+스프링 컨테이너가 저장해줌으로서 어마어마하게 편해진다!
+
+# Spring Container
+
+- 스프링 컨테이너가 생성되는 과정
+
+```java
+ApplicationContext applicationContext =
+	 new AnnotationConfigApplicationContext(AppConfig.class);
+```
+
+ApplicationContext = 스프링 컨테이너 (인터 페이스)
+
+스프링컨테이너는 xml을 기반으로 만들 수 있고  어노테이션 기반의 자바 설정 클래스 만들 수 있다.
+
+new AnnotationConfigApplicationContext(AppConfig.class); - 구현체
+
+1. 스프링 컨테이너 생성
+2. 스프링 빈 등록 ( **빈이름은 항상 다른 이름을 부여** 다른 빈 무시, 기존 빈 덮어버리기)
+3. 스프링 빈 의존 관계 설정
+4. 스프링 빈 의존 관계 설정 (AppConfig 내 Bean들 사이의 의존관계 설정 )
+- 자바 코드로 스프링 빈 등록 시 생성자를 호출하면서 의존관계 주입도 한번에 처리
+
+**정리**
+
+스프링 컨테이너를 생성하고, 설정 정보 참고하여 스프링 빈도 등록, 의존관계 설정
+
+## 컨테이너에 등록된 빈 조회
+
+ac.getBeanDefinitionNames() : 스프링에 등록된 모든 빈 이름 조회
+
+ac.getBean : 빈 이름으로 객체(인스턴스 객체 조회)
+
+- 컨테이너에 등록된 모든 빈 조회(ApplicationContextInfoTest)
+    - 직접 등록한 애플리케이션 빈 조회/
+    - 스프링 내부에서 사용하는 빈 조회
+    
+
+- 기본조회 (ApplicationContextBasicFindTest)
+    - 빈이름으로 조회
+    - 타입으로 조회
+    - 구체 타입으로 조회
+    
+
+- 동일한 타입이 둘 이상 시 (ApplicationContextSameBeanFindTest)
+    - 타입 조회시 같은 타입 두개 이상 →이름으로 조회
+    - 특정 타입 모두 조회
+    
+
+- **상속관계 조회 (ApplicationContextExtendsFindTest)**
+    - 부모타입으로 조회시 자식 타입도 함께 조회
+    - Object타입으로 조회하면 모든 스프링 빈 조회
