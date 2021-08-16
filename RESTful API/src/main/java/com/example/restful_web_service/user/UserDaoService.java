@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -44,6 +45,26 @@ public class UserDaoService {
             }
         }
         return null;
+    }
+
+    //멤버 삭제
+    public User deleteById(int id){
+        Iterator<User> iterator = users.iterator();
+
+        while (iterator.hasNext()){
+            User user = iterator.next();
+
+            if(user.getId() == id){
+                iterator.remove();
+                //어떤 데이터가 지워졌는지 확인가능
+                return user;
+            }
+        }
+
+        //데이터를 찾지 못한 경우
+        return null;
+
+
     }
 
 
