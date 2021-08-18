@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class UserController {
 
     //user 보내기
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user){
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user){
         User savedUser = service.save(user);
 
         //path에 주어진 가변변수에 새롭게 만든 id값을 넣는다.
