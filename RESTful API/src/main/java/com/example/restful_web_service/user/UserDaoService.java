@@ -18,9 +18,9 @@ public class UserDaoService {
 
     static {
         //사용자 등록
-        users.add(new User(1,"Diana",new Date()));
-        users.add(new User(2,"Tomas",new Date()));
-        users.add(new User(3,"Lupe" ,new Date()));
+        users.add(new User(1,"Diana",new Date(),"pass1","701010-111111"));
+        users.add(new User(2,"Tomas",new Date(),"pass2","801010-222222"));
+        users.add(new User(3,"Lupe" ,new Date(),"pass3","901010-111111"));
     }
 
     //모든 user 반환
