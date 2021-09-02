@@ -62,7 +62,7 @@ SOAP : Simple Object Access Protocol
 
 (즉, 통신 프로토콜을 위해 xml메시지 요청, 응답을 위한 시스템
 
-![Untitled.png](src/main/resources/static/img/Untitled 1.png)
+![Untitled.png](src/main/resources/static/img/Untitled_1.png)
 단점: 복잡성 (앞뒤 부가적인 )
 
 오버헤드, 개발하기 어렵고, 무겁다
@@ -161,7 +161,7 @@ Dispatch : 보내다, 파견
 - 요청에 맞는 Handler로 요청을 전달
 - 요청에 맞는 Handlerd의 실행 결과를 Http Response 형태로 만들어서 반환
 
-![Untitled.png](src/main/resources/static/img/Untitled 2.png)
+![Untitled.png](src/main/resources/static/img/Untitled_2.png)
 서블릿 컨테이너에서 Http 프로토콜로 들어오는 모든 요청을 처리하기 위해 제일 먼저 받는 FrontController역할 게이트 역할
 
 즉 사용자 요청은 **DispatcherServlet** 에서 시작되어 **DispatcherServlet 로 끝난다.**
@@ -172,17 +172,17 @@ Dispatch : 보내다, 파견
 - @Controller +  @ResponseBody 의 기능을 가지고있다( 값을 body내에 )
 - View 를 갖지 않는 REST Data(JSON / XML) 를 반환
 
-![Untitled.png](src/main/resources/static/img/Untitled 3.png)
+![Untitled.png](src/main/resources/static/img/Untitled_3.png)
 ## Path Variable 사용
 
 API이기 때문에 프로그래밍 사이에 약속되어있는 것!
 
-![Untitled.png](src/main/resources/static/img/Untitled 4.png)
+![Untitled.png](src/main/resources/static/img/Untitled_4.png)
 1번은 가변 데이터가 없는 반면, 2,3번은 가변 데이터가 URL에 들어가 있다. 이것이 path variable!
 
 예시)
 
-![Untitled.png](src/main/resources/static/img/Untitled 5.png)
+![Untitled.png](src/main/resources/static/img/Untitled_5.png)
 ---
 
 (2021 08 16)
@@ -249,7 +249,7 @@ ServletUrlComponentBuild class이용!
 
 200뿐만 아니라 201등 여러 응답코드를 가지고
 
-![Untitled.png](src/main/resources/static/img/Untitled 6.png)
+![Untitled.png](src/main/resources/static/img/Untitled_6.png)
 ### HTTP Status Code 제어를 위한 Exception Handling
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -277,7 +277,7 @@ public class UserNotFoundException extends RuntimeException{
 
 ```
 
-![Untitled.png](src/main/resources/static/img/Untitled 7.png)
+![Untitled.png](src/main/resources/static/img/Untitled_7.png)
 
 ### Spring의 AOP를 이용한 Exception Handling
 
@@ -419,7 +419,7 @@ spring:
 
 messages_de.properties 등등 이름 추가
 
-![Untitled.png](src/main/resources/static/img/Untitled 8.png)
+![Untitled.png](src/main/resources/static/img/Untitled_8.png)
 
 - **Controller**
 
@@ -435,7 +435,7 @@ return messageSource.getMessage("greeting.message",null, locale);
 
 - **Postman**
 
-![Untitled.png](src/main/resources/static/img/Untitled 9.png)
+![Untitled.png](src/main/resources/static/img/Untitled_9.png)
 
 ## Response 데이터 형식 변환 - XML format
 
@@ -451,11 +451,11 @@ return messageSource.getMessage("greeting.message",null, locale);
 
 - postman에서  applicatoin/xml 요청시
 
-![Untitled.png](src/main/resources/static/img/Untitled 10.png)
+![Untitled.png](src/main/resources/static/img/Untitled_10.png)
 
 xml 파일로 출력
 
-![Untitled.png](src/main/resources/static/img/Untitled 11.png)
+![Untitled.png](src/main/resources/static/img/Untitled_11.png)
 
 ## Response 데이터 제어를 위한 Filtering
 
