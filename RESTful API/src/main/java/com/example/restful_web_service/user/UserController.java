@@ -1,6 +1,7 @@
 package com.example.restful_web_service.user;
 
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +39,9 @@ public class UserController {
             throw new UserNotFoundException(String.format("ID[%s] not found",id));
         }
 
-        //HATEOAS
+        /**
+         *HATEOAS
+         */
         //매개변수 user를 삽입
         EntityModel<User> model = new EntityModel<>(user);
         //위의 user값을 반환할 때 추가적 링크 추가
