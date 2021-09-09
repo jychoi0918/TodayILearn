@@ -17,11 +17,14 @@ public class JpaMain {
 
         try {
             //logic
-            Member member = new Member();
-            member.setId(2L);
-            member.setName("GoodBye");
+            //조회
+            Member findMember = em.find(Member.class, 1L);
+            System.out.println("member = " + findMember.getId());
 
-            em.persist(member);
+
+            //삭제
+            em.remove(findMember);
+
             tx.commit();
         }catch (Exception e){
             tx.rollback();
