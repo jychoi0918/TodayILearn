@@ -18,7 +18,6 @@ public class JpaMain {
 
         try {
             //logic
-            //수정
             Member findMember = em.find(Member.class, 1L);
             //JPQL을 이용하여 페이징을 쉽게 할 수 있다.
             List<Member> resultList = em.createQuery("select m from Member as m", Member.class)
