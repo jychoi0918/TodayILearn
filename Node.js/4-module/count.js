@@ -18,8 +18,8 @@ console.log(module);
 module.exports.increase = increase;
 exports.increase = increase;
 
-console.log(exports.increase===exports);
+console.log(module.exports === exports);
 exports = {};
-console.log(exports.increase===exports);
+console.log(module.exports === exports);
 
 //exports는 모듈을 참조한다. 하지만 중간에 exports에 중간에 다르게 할당하면, 다른 것이 되어버린다.
