@@ -20,9 +20,9 @@
 
 // // -------------------------------------
 console.log('code1');
-console.time('timeout 0');
+console.time('timeout');
 
 setTimeout(()=>{
     console.log('setTimeout 0');
-    console.timeEnd('timeout 0')
+    console.timeEnd('timeout')
 },0);
