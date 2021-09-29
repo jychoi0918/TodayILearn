@@ -24,3 +24,4 @@ a.memberFunction();
 console.log('---global scope----');
 console.log(this);
 console.log(this === module.exports);
+// js에서는 바깥의 this는 global 을 가리켰지만, node.js에서는 this는 module.exports를 가리킨다.
