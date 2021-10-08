@@ -12,6 +12,8 @@ management:
         include: "*"
 
 spring:
+  jpa:
+    show-sql: true
   security:
     user:
       name: name
