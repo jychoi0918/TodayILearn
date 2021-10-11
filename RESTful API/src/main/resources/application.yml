@@ -12,9 +12,20 @@ management:
         include: "*"
 
 spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enable: true
   security:
     user:
       name: name
       password: passw0rd
+
+
