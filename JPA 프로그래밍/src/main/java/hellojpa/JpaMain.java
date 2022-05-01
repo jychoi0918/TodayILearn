@@ -18,15 +18,21 @@ public class JpaMain {
 
         try {
             Member member = new Member();
-            member.setId(100L);
+            member.setId(101L);
             member.setName("Name");
 
 //            >>>>>>>>>>>>>여기까지 비영속성
 
 //            여기부터 영속성<<<<<<<<<<<<<<<<<<<
+            System.out.println("===Before===");
            em.persist(member);
            //em.detatch(member); 는 영속성 컨텍스트 분리
             //em.remove(member); 는 객체를 삭제한 상태
+            System.out.println("===After===");
+
+            Member findMember = em.find(Member.class, 101L);
+            System.out.println("findMember = " + findMember.getId());
+            System.out.println("findMember = " + findMember.getName());
 
             tx.commit();
         }catch (Exception e){
